@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/emvFragment"
-        android:name="com.judahben149.emvsync.presentation.emv.EmvFragment"
+        android:name="com.judahben149.emvsync.presentation.emv.KeyExchangeFragment"
         android:label="fragment_emv"
-        tools:layout="@layout/fragment_emv" />
+        tools:layout="@layout/fragment_key_exchange" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.judahben149.emvsync.presentation.HomeFragment"
