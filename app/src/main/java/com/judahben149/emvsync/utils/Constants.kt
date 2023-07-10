@@ -11,4 +11,13 @@ object Constants {
     const val COMPONENT_KEY_2 = ""
     const val IS_SSL_BOOL = false
     const val TIMEOUT = 1000
+
+    const val TMK_PROCESSING_CODE = "9A0000"
+    const val TSK_PROCESSING_CODE = "9B0000"
+    const val TPK_PROCESSING_CODE = "9G0000"
+    const val DOWNLOAD_PARAM_PROCESSING_CODE = "9C0000"
+
+
+
+
 }
