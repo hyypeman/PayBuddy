@@ -80,4 +80,7 @@ dependencies {
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
+    //Bouncy castle for cryptography
+    implementation  'org.bouncycastle:bcprov-jdk15on:1.67'
+
 }
