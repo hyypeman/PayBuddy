@@ -16,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField ("String", "HOST_GROUP_KEY", getHostGroupKey())
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -47,6 +48,7 @@ android {
 
 dependencies {
     def hilt_version = "2.44.2"
+    def lottieVersion = "5.2.0"
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -83,4 +85,14 @@ dependencies {
     //Bouncy castle for cryptography
     implementation  'org.bouncycastle:bcprov-jdk15on:1.67'
 
+    //Lottie animation library
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+}
+
+String getHostGroupKey() {
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+    return properties['HOST_GROUP_KEY']
 }
