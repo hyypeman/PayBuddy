@@ -1,19 +1,26 @@
 package com.judahben149.emvsync.domain.model.keyExchange
 
 data class KeyExchangeResponse(
-    val tmk: String,
-    val tsk: String,
-    val tpk: String,
-    val downloadParameter: DownloadParameter,
-)
+    val type: KeyExchangeType,
+    val result: String
+) {
 
-data class DownloadParameter(
-    val merchantId: String,
-    val ctms: String,
-    val timeOut: String,
-    val currencyCode: String,
-    val countryCode: String,
-    val callHomeTime: String,
-    val merchantNameAndLocation: String,
-    val merchantCategoryCode: String,
-)
+    fun isSuccessful(): Boolean {
+        return result.endsWith("00")
+    }
+
+    fun getMessage(): String {
+        return if (isSuccessful()) {
+            type.name.plus(" Successful")
+        } else {
+            type.name.plus(" Failed with Error - $result")
+        }
+    }
+}
+
+enum class KeyExchangeType {
+    TMK,
+    TPK,
+    TSK,
+    TPD,
+}
