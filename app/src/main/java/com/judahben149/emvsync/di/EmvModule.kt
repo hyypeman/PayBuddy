@@ -1,7 +1,12 @@
 package com.judahben149.emvsync.di
 
+import android.app.Application
+import android.content.SharedPreferences
+import com.judahben149.emvsync.MainApp
 import com.judahben149.emvsync.domain.model.keyExchange.HostConfiguration
+import com.judahben149.emvsync.iso.KeyExchangeHandler
 import com.judahben149.emvsync.utils.Constants
+import com.nexgo.oaf.apiv3.DeviceEngine
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +29,18 @@ object EmvModule {
             isSsl = Constants.IS_SSL_BOOL,
             timeout = Constants.TIMEOUT
         )
+    }
+
+    @Provides
+    @Singleton
+    fun providesKeyExchangeHandler(sharedPreferences: SharedPreferences): KeyExchangeHandler {
+        return KeyExchangeHandler(sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun providesDeviceEngine(application: Application): DeviceEngine {
+        val mainApp = application as MainApp
+        return mainApp.deviceEngine
     }
 }
