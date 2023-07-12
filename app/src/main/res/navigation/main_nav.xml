@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/emvFragment"
-        android:name="com.judahben149.emvsync.presentation.emv.KeyExchangeFragment"
+        android:name="com.judahben149.emvsync.presentation.keyExchange.KeyExchangeFragment"
         android:label="fragment_emv"
         tools:layout="@layout/fragment_key_exchange" />
     <fragment
