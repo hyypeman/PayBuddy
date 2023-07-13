@@ -11,26 +11,180 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/anim_pgBar_masterKey"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="loading_orange.json"
+            app:lottie_rawRes="@raw/anim_loading_success_failed"
             app:lottie_loop="true"
             app:lottie_repeatMode="restart"
-            app:lottie_speed="1.0" />
+            app:lottie_speed="1.5"
+            />
 
         <TextView
             android:id="@+id/tv_master_key"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="18dp"
-            android:text="Downloading keys..."/>
-
+            android:layout_marginTop="2dp"
+            android:textSize="14sp"
+            android:text="Downloading Master key..."/>
     </LinearLayout>
+
+<!--    <com.google.android.material.divider.MaterialDivider-->
+<!--        android:layout_width="2dp"-->
+<!--        android:layout_height="12dp"-->
+<!--        -->
+<!--        />-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp" >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_pgBar_sessionKey"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/anim_loading_success_failed"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_sessionr_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:textSize="14sp"
+            android:text="Downloading Session key..."/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp" >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_pgBar_pinKey"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/anim_loading_success_failed"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_pin_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:textSize="14sp"
+            android:text="Downloading Pin key..."/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp" >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_pgBar_parameterDownload"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/anim_loading_success_failed"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_parameter_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:textSize="14sp"
+            android:text="Downloading Terminal Parameters..."/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp" >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_pgBar_injecting_masterKey"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/anim_loading_success_failed"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_injecting_master_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:textSize="14sp"
+            android:text="Injecting Master key..."/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp" >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_pgBar_injecting_pinKey"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/anim_loading_success_failed"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_speed="1.0" />
+
+        <TextView
+            android:id="@+id/tv_injecting_pin_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:textSize="14sp"
+            android:text="Injecting Pin key..."/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_textViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_master_key,tv_sessionr_key,tv_pin_key,tv_parameter_download,tv_injecting_master_key,tv_injecting_pin_key"
+        />
 </LinearLayout>

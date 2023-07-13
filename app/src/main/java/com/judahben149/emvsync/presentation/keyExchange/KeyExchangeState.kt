@@ -7,4 +7,6 @@ data class KeyExchangeState(
     val isParameterReceived: Boolean = false,
     val isMasterKeyInjected: Boolean = false,
     val isPinKeyInjected: Boolean = false,
+    val isFailure: Boolean = false,
+    val errorMessage: String = "",
 )

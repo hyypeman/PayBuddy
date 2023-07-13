@@ -55,18 +55,23 @@ class KeyExchangeViewModel @Inject constructor(
                     val parameterDownloadResp =
                         keyExchangeHandler.doParameterDownloadTransaction(SocketClient.getClient(IP_ADDRESS, PORT, packager))
 
-                    if (parameterDownloadResp.isSuccessful()) 
+                    if (parameterDownloadResp.isSuccessful()) {
                         _state.update { it.copy(isParameterReceived = true) }
-                    
+                    } else {
+                        onError(parameterDownloadResp.getMessage())
+                    }
+
                     if (tmkResponse.isSuccessful() && tskResponse.isSuccessful() && tpkResponse.isSuccessful()) {
                         _state.update { it.copy(isPinKeyReceived = true) }
                         injectKeys()
+                    } else {
+                        onError(tpkResponse.getMessage())
                     }
                 } else {
-                    tskResponse.getMessage()
+                    onError(tskResponse.getMessage())
                 }
             } else {
-                tmkResponse.getMessage()
+                onError(tmkResponse.getMessage())
             }
         }
     }
@@ -78,6 +83,8 @@ class KeyExchangeViewModel @Inject constructor(
         if (masterKeyResult == 0) {
             _state.update { it.copy(isMasterKeyInjected = true) }
             injectPinKey()
+        } else {
+            onError("Master key NOT injected!")
         }
     }
 
@@ -101,7 +108,14 @@ class KeyExchangeViewModel @Inject constructor(
 
         val result = pinPad.writeWKey(5, WorkKeyTypeEnum.PINKEY, key, key!!.size)
         
-        if (result == 0)
+        if (result == 0) {
             _state.update { it.copy(isPinKeyInjected = true) }
+        } else {
+            onError("Pin key NOT injected!")
+        }
+    }
+
+    private fun onError(message: String) {
+        _state.update { it.copy(isFailure = true, errorMessage = message) }
     }
 }
