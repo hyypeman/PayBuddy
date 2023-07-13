@@ -77,10 +77,10 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
 
         } catch (e: ISOException) {
             "Key Exchange (TMK) Error- ".plus(e.message).logThis()
-            result = "-3"
+            result = "-1"
         } catch (e: IOException) {
             "Key Exchange (TMK) Error- ".plus(e.message).logThis()
-            result = "-3"
+            result = "-1"
         }
 
         return KeyExchangeResponse(KeyExchangeType.TMK, result)
@@ -122,10 +122,10 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
 
         } catch (e: ISOException) {
             "Key Exchange (TSK) Error- ".plus(e.message).logThis()
-            result = "-3"
+            result = "-1"
         } catch (e: IOException) {
             "Key Exchange (TSK) Error- ".plus(e.message).logThis()
-            result = "-3"
+            result = "-1"
         }
 
         return KeyExchangeResponse(KeyExchangeType.TSK, result)
@@ -167,10 +167,10 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
 
         } catch (e: ISOException) {
             "Key Exchange (TPK) Error- ".plus(e.message).logThis()
-            result = "-3"
+            result = "-1"
         } catch (e: IOException) {
             "Key Exchange (TPK) Error- ".plus(e.message).logThis()
-            result = "-3"
+            result = "-1"
         }
 
         return KeyExchangeResponse(KeyExchangeType.TSK, result)
@@ -239,11 +239,11 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
             }
             else {
                 "Field 39 not 00 Error- ".logThis()
-                result = "-3"
+                result = "-1"
             }
         } catch (ex: ISOException) {
             "Key Exchange (Parameter download) Error- ".plus(ex.message).logThis()
-            result = "-3"
+            result = "-1"
         }
 
         return KeyExchangeResponse(KeyExchangeType.TPD, result)
