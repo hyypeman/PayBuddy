@@ -1,4 +1,4 @@
-package com.judahben149.emvsync.utils.isoUtils
+package com.judahben149.emvsync.utils.cryptographyUtils
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.security.Security
