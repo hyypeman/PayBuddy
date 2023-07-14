@@ -2,8 +2,8 @@ package com.judahben149.emvsync.utils
 
 import com.judahben149.emvsync.BuildConfig
 import com.judahben149.emvsync.domain.model.NIBSSPackager
-import com.judahben149.emvsync.utils.isoUtils.AESUtils
-import com.judahben149.emvsync.utils.isoUtils.TripleDESUtils
+import com.judahben149.emvsync.utils.cryptographyUtils.AESUtils
+import com.judahben149.emvsync.utils.cryptographyUtils.TripleDESUtils
 import org.jpos.iso.ISOException
 import org.jpos.iso.ISOMsg
 import org.jpos.iso.ISOUtil

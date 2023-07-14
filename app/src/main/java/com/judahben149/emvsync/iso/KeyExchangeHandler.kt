@@ -22,7 +22,7 @@ import com.judahben149.emvsync.utils.Constants.TPK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.Constants.TSK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.ISOUtils.getStan
 import com.judahben149.emvsync.utils.ISOUtils.parseResponse
-import com.judahben149.emvsync.utils.isoUtils.Sha256Utils
+import com.judahben149.emvsync.utils.cryptographyUtils.Sha256Utils
 import org.jpos.iso.ISODate
 import org.jpos.iso.ISOException
 import org.jpos.iso.ISOMsg
