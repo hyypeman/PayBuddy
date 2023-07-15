@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
             }
 
             btnReadCard.setOnClickListener {
-
+                navController.navigate(R.id.action_homeFragment_to_cardBalanceFragment)
             }
         }
     }
