@@ -31,4 +31,10 @@ object Constants {
     const val CURRENCY_CODE = "CURRENCY_CODE"
     const val COUNTRY_CODE = "COUNTRY_CODE"
     const val CTMS_TIME_DATE = "CTMS_TIME_DATE"
+
+    //EMV Constants
+    const val TERMINAL_CAPABILITY_CVM = "E0F8C8" // Tag : 9F33  // Signature Required
+    const val TERMINAL_CAPABILITY_NO_CVM = "E0DOC8" // Tag : 9F33
+    const val TERMINAL_CAPABILITY_CVM_ONLY = "E020C8" // Tag: 9F33 // Signature only
+    const val ADDITIONAL_TERMINAL_CAPABILITY = "7F00F0F001" // Tag : 9F40  or // 6000F0A001
 }
