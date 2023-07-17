@@ -15,10 +15,12 @@ import com.judahben149.emvsync.domain.model.card.CardType
 import com.judahben149.emvsync.domain.model.card.TransactionData
 import com.judahben149.emvsync.utils.*
 import com.judahben149.emvsync.utils.Constants.TERMINAL_CAPABILITY_CVM
+import com.judahben149.emvsync.utils.emvUtils.EmvUtils
 import com.judahben149.emvsync.utils.isoUtils.AmountUtils
 import com.nexgo.common.ByteUtils
 import com.nexgo.oaf.apiv3.DeviceEngine
 import com.nexgo.oaf.apiv3.SdkResult
+import com.nexgo.oaf.apiv3.device.pinpad.OnPinPadInputListener
 import com.nexgo.oaf.apiv3.device.reader.CardInfoEntity
 import com.nexgo.oaf.apiv3.device.reader.CardReader
 import com.nexgo.oaf.apiv3.device.reader.CardSlotTypeEnum
@@ -30,7 +32,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CardBalanceFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2 {
+class CardBalanceFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2, OnPinPadInputListener {
 
     private var _binding: FragmentCardBalanceBinding? = null
     private val binding get() = _binding!!
@@ -40,6 +42,9 @@ class CardBalanceFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener
 
     @Inject
     lateinit var emvHandler2: EmvHandler2
+
+    @Inject
+    lateinit var emvUtils: EmvUtils
 
     @Inject
     lateinit var sessionManager: SessionManager
@@ -59,6 +64,9 @@ class CardBalanceFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         cardReader = deviceEngine.cardReader
+
+        emvUtils.initializeEmvAid(emvHandler2)
+        emvUtils.initializeEmvCapk(emvHandler2)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -113,12 +121,11 @@ class CardBalanceFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener
 
                     updateViewModelWithEmvDetails(emvTransDataEntity)
 
+                    emvHandler2.setTlv(ByteArray(0x9F, { 0x33 }), ByteUtils.hexString2ByteArray(TERMINAL_CAPABILITY_CVM))
 //                            emvHandler2.initTermConfig()
                     emvHandler2.setTlv(ByteArray(0x9C), HexUtils.hexStringToByteArray("31"))  // Set transaction Type - 31 is for balance enquiry
-                    emvHandler2.setTlv(ByteArray(0x9F, { 0x33 }), ByteUtils.hexString2ByteArray(TERMINAL_CAPABILITY_CVM))
 
-                    emvHandler2.emvProcess(emvTransDataEntity, this@CardBalanceFragment)
-                    "Card Number - ${ emvHandler2.emvCardDataInfo.cardNo }".logThis("Tagg")
+                    emvHandler2.emvProcess(emvTransDataEntity, this)
                 }
 
                 CardSlotTypeEnum.RF -> {  }
@@ -193,6 +200,13 @@ class CardBalanceFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener
 
     }
 
+    override fun onInputResult(p0: Int, p1: ByteArray?) {
+
+    }
+
+    override fun onSendKey(p0: Byte) {
+
+    }
 
     override fun onDestroy() {
         super.onDestroy()
