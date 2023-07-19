@@ -7,4 +7,8 @@ object BeeperUtils {
     fun beepOnce(deviceEngine: DeviceEngine) {
         deviceEngine.beeper.beep(100)
     }
+
+    fun beepOnceShort(deviceEngine: DeviceEngine) {
+        deviceEngine.beeper.beep(50)
+    }
 }
