@@ -2,47 +2,53 @@ package com.judahben149.emvsync.domain.model.card
 
 data class TransactionData(
 
-    var cardNo: String?= null,
-    var expiryDate: String? = null,
-    var cardSerialNo: String? = null,
-    var track2Data: String? = null,
-    var amount: Double = 0.0,
-    var iccData: String? = null,
-    var aid: String? = null,
-    var rrn: String? = null,
-    var stan: String?= null,
-    var datetime: String? = null,
-    var pinData: String? = null,
-    var transDate: String? = null,
-    var transTime: String? = null,
-    var appLabel: String? = null,
+    val cardNo: String?= null,
+    val expiryDate: String? = null,
+    val cardSerialNo: String? = null,
+    val track2Data: String? = null,
+    val amount: Double = 0.0,
+    val iccData: String? = null,
+    val aid: String? = null,
+    val rrn: String? = null,
+    val stan: String?= null,
+    val datetime: String? = null,
+    val pinData: String? = null,
+    val transDate: String? = null,
+    val transTime: String? = null,
+    val appLabel: String? = null,
     val originalAmount: String? = null,
     val processingCode: String? = null,
-    var accountType: String? = null,
-    var cardHolderName: String? = null,
+    val accountType: String? = null,
+    val cardHolderName: String? = null,
     val transDateTime: String? = null,
-    var serviceCode: String? = null,
-    var pinType: String? = null,
-    var transType: String? = null,
-    var contactlessMode: String? = ContactlessModeConstant.EMV.name,
-    var cardType: String? = null,
-    var accountBalance: String? = null,
+    val serviceCode: String? = null,
+    val pinType: String? = null,
+    val transType: TransactionType = TransactionType.BALANCE,
+    val contactlessMode: String? = ContactlessModeConstant.EMV.name,
+    val cardType: String? = null,
+    val accountBalance: String? = null,
     val isOnlinePin: Boolean? = false,
-    var posEntryMode: String? = null,
-    var authCode: String? = null,
-    var echoData: String? = null,
-    var tvr: String? = null,
-    var tsi: String? = null,
-    var responseMessage: String? = null,
-    var responseCode: String? = null
+    val posEntryMode: String? = null,
+    val authCode: String? = null,
+    val echoData: String? = null,
+    val tvr: String? = null,
+    val tsi: String? = null,
+    val responseMessage: String? = null,
+    val responseCode: String? = null,
+    val pinEnteredLength: Int = 0
 )
 
-data class TransactionType(
-    val transactionTypeCode: String = "",
-    val messageType: String = "",
-    val transactionTypeLabel: String = "",
-)
+//data class TransactionType(
+//    val transactionTypeCode: String = "",
+//    val messageType: String = "",
+//    val transactionTypeLabel: String = "",
+//)
 
+enum class TransactionType {
+    BALANCE,
+    PURCHASE,
+    REVERSAL
+}
 
 enum class ContactlessModeConstant {
     MSD,
