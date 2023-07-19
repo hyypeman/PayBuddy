@@ -4,10 +4,13 @@ import com.judahben149.emvsync.BuildConfig
 import com.judahben149.emvsync.domain.model.NIBSSPackager
 import com.judahben149.emvsync.utils.cryptographyUtils.AESUtils
 import com.judahben149.emvsync.utils.cryptographyUtils.TripleDESUtils
+import org.jpos.iso.ISODate
 import org.jpos.iso.ISOException
 import org.jpos.iso.ISOMsg
 import org.jpos.iso.ISOUtil
-import java.util.Random
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 object ISOUtils {
 
@@ -20,6 +23,14 @@ object ISOUtils {
             e.message.logThis()
         }
         return random
+    }
+
+    fun generateRetrievalReferenceNumber(transDateTime: String?, stan: String): String {
+        val date = ISODate.parseISODate(transDateTime)
+        val hour = SimpleDateFormat("HH", Locale.getDefault()).format(date)
+
+        val julianDate = ISODate.getJulianDate(date)
+        return julianDate + hour + stan
     }
 
     /** Logs the available fields in the ISO message
