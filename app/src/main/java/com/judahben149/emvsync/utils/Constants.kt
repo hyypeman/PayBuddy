@@ -4,6 +4,9 @@ object Constants {
 
     const val SETTINGS = "SETTINGS"
 
+    //ACQUIRER
+    const val ACQUIRING_INSTITUTION_ID = "111129"
+
     //Channel settings constants
     const val IP_ADDRESS = "196.6.103.18"
     const val PORT = "5001"
@@ -27,6 +30,14 @@ object Constants {
     const val PURCHASE_PROCESSING_CODE = "000000"
 //    const val reversalProcessingCode = "0100"
 
+    const val MESSAGE_REASON_TIMEOUT = "4021"
+
+    //ISO Response Errors
+    const val TIME_OUT = "-1"
+    const val MALFORMED_RESPONSE = "-2"
+    const val HOST_DISCONNECT = "-3"
+    const val ERROR_PACKAGING_MESSAGE = "-4"
+
     const val SIXTY_FOUR_ZEROS = "0000000000000000000000000000000000000000000000000000000000000000"
 
     //Shared prefs keys
@@ -47,6 +58,5 @@ object Constants {
     const val TERMINAL_CAPABILITY_NO_CVM = "E0DOC8" // Tag : 9F33
     const val TERMINAL_CAPABILITY_CVM_ONLY = "E020C8" // Tag: 9F33 // Signature only
     const val ADDITIONAL_TERMINAL_CAPABILITY = "7F00F0F001" // Tag : 9F40  or // 6000F0A001
-
 
 }
