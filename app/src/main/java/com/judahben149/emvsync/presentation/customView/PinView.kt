@@ -29,6 +29,8 @@ class PinView @JvmOverloads constructor(
                 binding.tvPin2.visibility = View.INVISIBLE
                 binding.tvPin3.visibility = View.INVISIBLE
                 binding.tvPin4.visibility = View.INVISIBLE
+                resetAllStrokeWidth()
+                binding.cardPin1.strokeWidth = 2
             }
 
             1 -> {
@@ -36,6 +38,8 @@ class PinView @JvmOverloads constructor(
                 binding.tvPin2.visibility = View.INVISIBLE
                 binding.tvPin3.visibility = View.INVISIBLE
                 binding.tvPin4.visibility = View.INVISIBLE
+                resetAllStrokeWidth()
+                binding.cardPin2.strokeWidth = 2
             }
 
             2 -> {
@@ -43,6 +47,8 @@ class PinView @JvmOverloads constructor(
                 binding.tvPin2.visibility = View.VISIBLE
                 binding.tvPin3.visibility = View.INVISIBLE
                 binding.tvPin4.visibility = View.INVISIBLE
+                resetAllStrokeWidth()
+                binding.cardPin3.strokeWidth = 2
             }
 
             3 -> {
@@ -50,6 +56,8 @@ class PinView @JvmOverloads constructor(
                 binding.tvPin2.visibility = View.VISIBLE
                 binding.tvPin3.visibility = View.VISIBLE
                 binding.tvPin4.visibility = View.INVISIBLE
+                resetAllStrokeWidth()
+                binding.cardPin4.strokeWidth = 2
             }
 
             4 -> {
@@ -57,8 +65,18 @@ class PinView @JvmOverloads constructor(
                 binding.tvPin2.visibility = View.VISIBLE
                 binding.tvPin3.visibility = View.VISIBLE
                 binding.tvPin4.visibility = View.VISIBLE
+                resetAllStrokeWidth()
             }
 
+        }
+    }
+
+    private fun resetAllStrokeWidth() {
+        binding.apply {
+            cardPin1.strokeWidth = 0
+            cardPin2.strokeWidth = 0
+            cardPin3.strokeWidth = 0
+            cardPin4.strokeWidth = 0
         }
     }
 }
