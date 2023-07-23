@@ -3,38 +3,38 @@ package com.judahben149.emvsync.domain.model.card
 data class TransactionData(
 
     val cardNo: String?= null,
-    val expiryDate: String? = null,
-    val cardSerialNo: String? = null,
-    val track2Data: String? = null,
+    var expiryDate: String? = null,
+    var cardSequenceNo: String? = null,
+    var track2Data: String? = null,
     val amount: Double = 0.0,
-    val iccData: String? = null,
-    val aid: String? = null,
+    var iccData: String? = null,
+    var aid: String? = null,
     val rrn: String? = null,
     val stan: String?= null,
     val datetime: String? = null,
     val pinData: String? = null,
     val transDate: String? = null,
     val transTime: String? = null,
-    val appLabel: String? = null,
+    var appLabel: String? = null,
     val originalAmount: String? = null,
     val processingCode: String? = null,
     val accountType: String? = null,
-    val cardHolderName: String? = null,
+    var cardHolderName: String? = null,
     val transDateTime: String? = null,
-    val serviceCode: String? = null,
-    val pinType: String? = null,
+    var serviceCode: String? = null,
+    val pinType: PinType? = null,
     val transType: TransactionType = TransactionType.BALANCE,
-    val contactlessMode: String? = ContactlessModeConstant.EMV.name,
+    var contactlessMode: ContactlessModeConstant = ContactlessModeConstant.EMV,
     val cardType: String? = null,
-    val accountBalance: String? = null,
+    var accountBalance: String? = null,
     val isOnlinePin: Boolean? = false,
     val posEntryMode: String? = null,
-    val authCode: String? = null,
-    val echoData: String? = null,
-    val tvr: String? = null,
-    val tsi: String? = null,
-    val responseMessage: String? = null,
-    val responseCode: String? = null,
+    var authCode: String? = null,
+    var echoData: String? = null,
+    var tvr: String? = null,
+    var tsi: String? = null,
+    var responseMessage: String? = null,
+    var responseCode: String? = null,
     val pinEnteredLength: Int = 0
 )
 
@@ -48,6 +48,11 @@ enum class TransactionType {
     BALANCE,
     PURCHASE,
     REVERSAL
+}
+
+enum class PinType {
+    ONLINE_CVM,
+    OFFLINE_CVM
 }
 
 enum class ContactlessModeConstant {
