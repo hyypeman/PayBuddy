@@ -68,5 +68,6 @@
     <color name="black_light">#191919</color>
     <color name="white">#FFFFFF</color>
     <color name="grey_text">#CACACA</color>
-    <color name="gold">#b3a500</color>
+    <color name="deep_brown">#540b0e</color>
+    <color name="btn_color">#FBCBC7</color>
 </resources>
