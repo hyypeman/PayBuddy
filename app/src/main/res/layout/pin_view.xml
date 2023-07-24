@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toStartOf="@id/card_pin_2"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeWidth="0dp"
-        app:strokeColor="@color/black_light"
+        app:strokeColor="@color/deep_brown"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toStartOf="@id/card_pin_3"
         app:layout_constraintStart_toEndOf="@id/card_pin_1"
         app:strokeWidth="0dp"
-        app:strokeColor="@color/black_light"
+        app:strokeColor="@color/deep_brown"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -58,7 +58,7 @@
         android:layout_width="36dp"
         android:layout_height="48dp"
         app:strokeWidth="0dp"
-        app:strokeColor="@color/black_light"
+        app:strokeColor="@color/deep_brown"
         android:backgroundTint="@color/md_theme_light_primaryContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/card_pin_4"
@@ -81,7 +81,7 @@
         android:id="@+id/card_pin_4"
         android:layout_width="36dp"
         app:strokeWidth="0dp"
-        app:strokeColor="@color/black_light"
+        app:strokeColor="@color/deep_brown"
         android:layout_height="48dp"
         android:layout_marginEnd="48dp"
         android:backgroundTint="@color/md_theme_light_primaryContainer"

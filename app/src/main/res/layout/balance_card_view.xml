@@ -23,7 +23,7 @@
             app:lottie_loop="true"
             app:lottie_autoPlay="true"
             app:lottie_speed="0.4"
-            app:lottie_rawRes="@raw/anim_wavy"
+            app:lottie_rawRes="@raw/anim_wavy_light"
             />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_gravity="top|start"
             android:layout_marginStart="24dp"
             android:text="Current balance"
-            android:textColor="@color/white"
+            android:textColor="#792024"
             android:alpha="0.6"
             android:textSize="10sp"
             android:layout_marginEnd="16dp"
@@ -47,7 +47,7 @@
             android:layout_gravity="top|start"
             android:layout_marginStart="24dp"
             android:text="N30,000"
-            android:textColor="@color/white"
+            android:textColor="@color/deep_brown"
             android:textSize="32sp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="28dp"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
             android:text="View history"
-            android:textColor="@color/white"
+            android:textColor="@color/deep_brown"
             android:padding="6dp"
             android:textSize="12sp"
             android:layout_marginEnd="16dp"
@@ -85,7 +85,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/white"
+            android:textColor="@color/deep_brown"
             android:textSize="12sp"
             />
     </com.google.android.material.card.MaterialCardView>
