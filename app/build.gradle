@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -20,10 +22,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    sourceSets.main {
-        jniLibs.srcDir 'libs'
-        jni.srcDirs = [] //disable automatic ndk-build call
-    }
+//    sourceSets.main {
+//        jniLibs.srcDir 'libs'
+//        jni.srcDirs = [] //disable automatic ndk-build call
+//    }
 
     buildTypes {
         release {
