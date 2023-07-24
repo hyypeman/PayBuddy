@@ -26,5 +26,18 @@
         android:id="@+id/cardBalanceFragment"
         android:name="com.judahben149.emvsync.presentation.cardBalance.CardBalanceFragment"
         android:label="fragment_card_balance"
-        tools:layout="@layout/fragment_card_balance" />
+        tools:layout="@layout/fragment_card_balance" >
+        <action
+            android:id="@+id/action_cardBalanceFragment_to_transactionResultFragment"
+            app:destination="@id/transactionResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionResultFragment"
+        android:name="com.judahben149.emvsync.presentation.transactionResult.TransactionResultFragment"
+        android:label="fragment_transaction_result"
+        tools:layout="@layout/fragment_transaction_result" >
+        <argument
+            android:name="transactionData"
+            app:argType="com.judahben149.emvsync.domain.model.card.TransactionData" />
+    </fragment>
 </navigation>
