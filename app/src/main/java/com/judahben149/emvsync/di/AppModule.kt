@@ -3,6 +3,7 @@ package com.judahben149.emvsync.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.judahben149.emvsync.utils.Constants
+import com.judahben149.emvsync.utils.PreferencesHelper
 import com.judahben149.emvsync.utils.SessionManager
 import dagger.Module
 import dagger.Provides
@@ -31,5 +32,11 @@ object AppModule {
     @Singleton
     fun providesSessionManager(sharedPreferences: SharedPreferences): SessionManager {
         return SessionManager(sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun providesPreferencesHelper(sharedPreferences: SharedPreferences): PreferencesHelper {
+        return PreferencesHelper(sharedPreferences)
     }
 }
