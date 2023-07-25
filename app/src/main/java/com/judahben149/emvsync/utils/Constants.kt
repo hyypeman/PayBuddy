@@ -3,14 +3,19 @@ package com.judahben149.emvsync.utils
 object Constants {
 
     const val SETTINGS = "SETTINGS"
+    const val IS_FIRST_LAUNCH = "IS_FIRST_LAUNCH"
 
     //ACQUIRER
-    const val ACQUIRING_INSTITUTION_ID = "111129"
+//    const val ACQUIRING_INSTITUTION_ID = "111129"
+    const val ACQUIRING_INSTITUTION_ID = "ACQUIRING_INSTITUTION_ID"
 
     //Channel settings constants
-    const val IP_ADDRESS = "196.6.103.18"
-    const val PORT = "5001"
-    const val TERMINAL_ID = "2070AL32"
+//    const val IP_ADDRESS = "196.6.103.18"
+//    const val PORT = "5001"
+//    const val TERMINAL_ID = "2070AL32"
+    const val IP_ADDRESS = "IP_ADDRESS"
+    const val PORT = "PORT"
+    const val TERMINAL_ID = "TERMINAL_ID"
     const val COMPONENT_KEY_1 = ""
     const val COMPONENT_KEY_2 = ""
     const val IS_SSL_BOOL = false
