@@ -1,10 +1,16 @@
 package com.judahben149.emvsync.utils
 
 import android.content.SharedPreferences
+import com.judahben149.emvsync.utils.Constants.ACQUIRING_INSTITUTION_ID
 import com.judahben149.emvsync.utils.Constants.COUNTRY_CODE
 import com.judahben149.emvsync.utils.Constants.CURRENCY_CODE
+import com.judahben149.emvsync.utils.Constants.IP_ADDRESS
+import com.judahben149.emvsync.utils.Constants.MERCHANT_CATEGORY_CODE
 import com.judahben149.emvsync.utils.Constants.MERCHANT_ID
+import com.judahben149.emvsync.utils.Constants.MERCHANT_LOCATION
+import com.judahben149.emvsync.utils.Constants.PORT
 import com.judahben149.emvsync.utils.Constants.TERMINAL_ID
+import com.judahben149.emvsync.utils.Constants.TERMINAL_SESSION_KEY
 import javax.inject.Inject
 
 class SessionManager @Inject constructor(private val sharedPreferences: SharedPreferences) {
@@ -15,7 +21,24 @@ class SessionManager @Inject constructor(private val sharedPreferences: SharedPr
 
     fun getTerminalId(): String {
         return sharedPreferences.fetchString(TERMINAL_ID).toString()
+//        return Constants.TERMINAL_ID
     }
+
+    fun getAcquiringInstitutionCode(): String {
+        return sharedPreferences.fetchString(ACQUIRING_INSTITUTION_ID).toString()
+//        return Constants.ACQUIRING_INSTITUTION_ID
+    }
+
+    fun getHostIpAddress(): String {
+        return sharedPreferences.fetchString(IP_ADDRESS).toString()
+//        return Constants.IP_ADDRESS
+    }
+
+    fun getPortNumber(): String {
+        return sharedPreferences.fetchString(PORT).toString()
+//        return Constants.PORT
+    }
+
 
     fun getMerchantId(): String {
         return sharedPreferences.fetchString(MERCHANT_ID).toString()
@@ -25,4 +48,31 @@ class SessionManager @Inject constructor(private val sharedPreferences: SharedPr
         return sharedPreferences.fetchString(COUNTRY_CODE).toString()
     }
 
+    fun getMerchantCategoryCode(): String {
+        return sharedPreferences.fetchString(MERCHANT_CATEGORY_CODE).toString()
+    }
+
+    fun getMerchantNameAndLocation(): String {
+        return sharedPreferences.fetchString(MERCHANT_LOCATION).toString()
+    }
+
+    fun getSessionKey(): String {
+        return sharedPreferences.fetchString(TERMINAL_SESSION_KEY).toString()
+    }
+
+    fun saveHostIpAddress(ipAddress: String) {
+        sharedPreferences.saveString(IP_ADDRESS, ipAddress)
+    }
+
+    fun savePort(port: String) {
+        sharedPreferences.saveString(PORT, port)
+    }
+
+    fun saveTerminalNumber(terminalNumber: String) {
+        sharedPreferences.saveString(TERMINAL_ID, terminalNumber)
+    }
+
+    fun saveAcquirerID(acquirerId: String) {
+        sharedPreferences.saveString(ACQUIRING_INSTITUTION_ID, acquirerId)
+    }
 }
