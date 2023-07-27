@@ -21,6 +21,12 @@
         <action
             android:id="@+id/action_homeFragment_to_cardBalanceFragment"
             app:destination="@id/cardBalanceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardBalanceFragment"
@@ -39,5 +45,19 @@
         <argument
             android:name="transactionData"
             app:argType="com.judahben149.emvsync.domain.model.card.TransactionData" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.judahben149.emvsync.presentation.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.judahben149.emvsync.presentation.purchase.PurchaseFragment"
+        android:label="fragment_purchase"
+        tools:layout="@layout/fragment_purchase" >
+        <action
+            android:id="@+id/action_purchaseFragment_to_cardBalanceFragment"
+            app:destination="@id/cardBalanceFragment" />
     </fragment>
 </navigation>
