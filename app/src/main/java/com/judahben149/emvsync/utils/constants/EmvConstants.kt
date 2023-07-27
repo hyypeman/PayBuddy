@@ -1,7 +1,7 @@
 package com.judahben149.emvsync.utils.constants
 
 object EmvConstants {
-
+    val REVERSAL_CODES = hashSetOf<String>("06", "-1","-2","-3")
 
 }
 
