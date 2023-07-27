@@ -1,9 +1,11 @@
-package com.judahben149.emvsync.utils
+package com.judahben149.emvsync.utils.isoUtils
 
 import com.judahben149.emvsync.BuildConfig
 import com.judahben149.emvsync.domain.model.NIBSSPackager
+import com.judahben149.emvsync.domain.model.card.TransactionData
 import com.judahben149.emvsync.utils.cryptographyUtils.AESUtils
 import com.judahben149.emvsync.utils.cryptographyUtils.TripleDESUtils
+import com.judahben149.emvsync.utils.logThis
 import org.jpos.iso.ISODate
 import org.jpos.iso.ISOException
 import org.jpos.iso.ISOMsg
@@ -110,8 +112,8 @@ object ISOUtils {
         return AESUtils().decryptHexFormat(hostGroupKey).toString()
     }
 
-    fun parseTLV(resp: String, Tag: String): String? {
-        var resp = resp
+    fun parseTLV(response: String, Tag: String): String? {
+        var resp = response
         var data = ""
         var len = ""
         val nextTag = 0
@@ -128,4 +130,41 @@ object ISOUtils {
         }
         return data
     }
+
+    fun buildField59(transactionData: TransactionData, terminalId: String): String {
+        transactionData.echoData = terminalId.plus("-" + transactionData.rrn).plus("-" +
+                convertDe7ToDateFormatYYYYMMDDHHMMSS(transactionData.datetime.toString())
+        )
+
+        return transactionData.echoData.toString()
+    }
+
+    private fun convertDe7ToDateFormatYYYYMMDDHHMMSS(de7: String): String {
+        if (de7.isEmpty()) {
+            return getCurrentDateFormatYYYYMMDDHHMMSS()
+        }
+
+        val date = ISODate.parseISODate(de7)
+        val dateFormat = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
+        return dateFormat.format(date)
+    }
+
+    private fun getCurrentDateFormatYYYYMMDDHHMMSS(): String {
+        val formatter = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
+        return formatter.format(Date())
+    }
+
+    fun getIsoTransDate(): String {
+        return ISODate.getDate(Date())
+    }
+
+    fun getIsoTransTime(): String {
+        return ISODate.getTime(Date())
+    }
+
+    fun getIsoTransDateTime(): String {
+        return ISODate.getDateTime(Date())
+    }
+
+
 }

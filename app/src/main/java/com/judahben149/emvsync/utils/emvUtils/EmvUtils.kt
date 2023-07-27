@@ -13,9 +13,9 @@ import javax.inject.Inject
 
 class EmvUtils @Inject constructor(private val context: Context) {
 
-    fun getCapkList(): List<CapkEntity>? {
+    private fun getCapkList(): List<CapkEntity>? {
         val capkList: MutableList<CapkEntity> = ArrayList()
-        val jsonArray = JsonParser.parseString(readAssetsText("emv_test_capk.json")).asJsonArray ?: return null
+        val jsonArray = JsonParser.parseString(readAssetsText("emv_capk.json")).asJsonArray ?: return null
 
         for(user in jsonArray) {
             val userBean = Gson().fromJson(user, CapkEntity::class.java)
@@ -99,5 +99,42 @@ class EmvUtils @Inject constructor(private val context: Context) {
             ex.printStackTrace()
         }
         return null
+    }
+
+    fun maskCreditCardNumber(cardNumber: String): String {
+        val startIndex = 7 // 8th digit
+        val endIndex = 11 // 12th digit
+
+        val maskedDigits = cardNumber.substring(startIndex, endIndex + 1).replace("\\d".toRegex(), "*")
+        val maskedCardNumber = StringBuilder(cardNumber).apply {
+            replace(startIndex, endIndex + 1, maskedDigits)
+        }
+
+        return maskedCardNumber.toString()
+    }
+
+    fun getAppLabel(
+        issuerCodeTableIndex: String,
+        appLabel: String?,
+        appPreferredName: String
+    ): String? {
+        var appLabelResult: String? = null
+
+        if (issuerCodeTableIndex.isEmpty()) {
+            appLabelResult = appLabel
+            return appLabelResult
+        }
+
+        if (issuerCodeTableIndex.toInt() == 1) {
+            if (appPreferredName.isEmpty()) {
+                appLabelResult = appLabel
+            } else {
+                appLabelResult = appPreferredName
+            }
+        } else {
+            appLabelResult = appLabel
+        }
+
+        return appLabelResult
     }
 }
