@@ -66,8 +66,10 @@
     <color name="red">#FF2626</color>
     <color name="black">#000000</color>
     <color name="black_light">#191919</color>
+    <color name="grey_light">#2D2D2D</color>
     <color name="white">#FFFFFF</color>
     <color name="grey_text">#CACACA</color>
     <color name="deep_brown">#540b0e</color>
     <color name="btn_color">#FBCBC7</color>
+    <color name="grey">#EFEDED</color>
 </resources>
