@@ -27,7 +27,7 @@ class BalanceCard @JvmOverloads constructor(
     }
 
     fun setAmount(amount: String) {
-
+        binding.tvBalance.text = amount
     }
 
     fun setOnClickListener(listener: () -> Unit) {

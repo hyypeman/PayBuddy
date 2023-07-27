@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|start"
             android:layout_marginStart="24dp"
-            android:text="Current balance"
+            android:text="Last checked balance"
             android:textColor="#792024"
             android:alpha="0.6"
             android:textSize="10sp"
