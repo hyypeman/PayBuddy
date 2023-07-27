@@ -1,4 +1,4 @@
-package com.kelviniyalo.nexgoemvext.util
+package com.judahben149.emvsync.iso
 
 import org.jpos.core.Configurable
 import org.jpos.core.Configuration
@@ -14,7 +14,7 @@ import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import javax.net.ssl.*
 
-class TcpSsLConnection : SimpleLogSource(), ISOServerSocketFactory, ISOClientSocketFactory,
+class TCPSSLCONNECTION : SimpleLogSource(), ISOServerSocketFactory, ISOClientSocketFactory,
     Configurable {
     private var sslc: SSLContext? = null
     private var serverFactory: SSLServerSocketFactory? = null
