@@ -5,6 +5,14 @@ object Constants {
     const val SETTINGS = "SETTINGS"
     const val IS_FIRST_LAUNCH = "IS_FIRST_LAUNCH"
 
+    const val PROGRESS_DIALOG = "PROGRESS_DIALOG"
+    const val CONFIRMATION_DIALOG = "CONFIRMATION_DIALOG"
+    const val PURCHASE_AMOUNT = "PURCHASE_AMOUNT"
+    const val IS_PURCHASE_TRANSACTION = "IS_PURCHASE_TRANSACTION"
+    const val LAST_BALANCE = "LAST_BALANCE"
+    const val CARD_HOLDER_NAME = "CARD_HOLDER_NAME"
+
+
     //ACQUIRER
 //    const val ACQUIRING_INSTITUTION_ID = "111129"
     const val ACQUIRING_INSTITUTION_ID = "ACQUIRING_INSTITUTION_ID"
@@ -37,7 +45,8 @@ object Constants {
 
     const val MESSAGE_REASON_TIMEOUT = "4021"
 
-    //ISO Response Errors
+    //ISO Response Codes
+    const val SUCCESSFUL = "00"
     const val TIME_OUT = "-1"
     const val MALFORMED_RESPONSE = "-2"
     const val HOST_DISCONNECT = "-3"
