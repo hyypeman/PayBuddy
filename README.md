@@ -12,7 +12,7 @@ Work in Progress 🚧🚧
 * JPOS for ISO operations
 * ISO 8583 library for ISO message parsing
 * Sockets for network operations
-* OkHttp to assist with network ops too
+* OkHttp to assist with socket response parsing
 * Bouncy Castle for cryptography
 * Timber for logging
 * Shared preferences
