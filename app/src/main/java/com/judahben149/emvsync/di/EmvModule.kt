@@ -5,8 +5,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.judahben149.emvsync.MainApp
 import com.judahben149.emvsync.domain.model.keyExchange.HostConfiguration
-import com.judahben149.emvsync.iso.KeyExchangeHandler
+import com.judahben149.emvsync.domain.usecase.KeyExchangeUseCase
 import com.judahben149.emvsync.utils.Constants
+import com.judahben149.emvsync.utils.SessionManager
 import com.judahben149.emvsync.utils.emvUtils.EmvUtils
 import com.nexgo.oaf.apiv3.DeviceEngine
 import com.nexgo.oaf.apiv3.emv.EmvHandler2
@@ -32,12 +33,6 @@ object EmvModule {
             isSsl = Constants.IS_SSL_BOOL,
             timeout = Constants.TIMEOUT
         )
-    }
-
-    @Provides
-    @Singleton
-    fun providesKeyExchangeHandler(sharedPreferences: SharedPreferences): KeyExchangeHandler {
-        return KeyExchangeHandler(sharedPreferences)
     }
 
     @Provides
