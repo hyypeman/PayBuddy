@@ -1,5 +1,9 @@
 package com.judahben149.emvsync.domain.model.card
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class TransactionData(
 
     val cardNo: String?= null,
@@ -9,12 +13,12 @@ data class TransactionData(
     val amount: Double = 0.0,
     var iccData: String? = null,
     var aid: String? = null,
-    val rrn: String? = null,
-    val stan: String?= null,
-    val datetime: String? = null,
+    var rrn: String? = null,
+    var stan: String?= null,
+    var datetime: String? = null,
     val pinData: String? = null,
-    val transDate: String? = null,
-    val transTime: String? = null,
+    var transDate: String? = null,
+    var transTime: String? = null,
     var appLabel: String? = null,
     val originalAmount: String? = null,
     val processingCode: String? = null,
@@ -35,20 +39,24 @@ data class TransactionData(
     var tsi: String? = null,
     var responseMessage: String? = null,
     var responseCode: String? = null,
-    val pinEnteredLength: Int = 0
-)
+    val pinEnteredLength: Int = 0,
+    var transactionStatus: TransactionStatus = TransactionStatus.UNPROCESSED,
+    val isReversal: Boolean = false
+): Parcelable
 
-//data class TransactionType(
-//    val transactionTypeCode: String = "",
-//    val messageType: String = "",
-//    val transactionTypeLabel: String = "",
-//)
 
 enum class TransactionType {
     BALANCE,
     PURCHASE,
     REVERSAL
 }
+
+enum class TransactionStatus {
+    SUCCESS,
+    FAILURE,
+    UNPROCESSED
+}
+
 
 enum class PinType {
     ONLINE_CVM,
