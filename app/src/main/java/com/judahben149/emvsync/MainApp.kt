@@ -1,8 +1,8 @@
 package com.judahben149.emvsync
 
 import android.app.Application
+import com.judahben149.emvsync.utils.PreferencesHelper
 import com.judahben149.emvsync.utils.emvUtils.EmvUtils
-import com.judahben149.emvsync.utils.logThis
 import com.nexgo.oaf.apiv3.APIProxy
 import com.nexgo.oaf.apiv3.DeviceEngine
 import com.nexgo.oaf.apiv3.emv.EmvHandler2
@@ -19,6 +19,9 @@ class MainApp : Application() {
     @Inject
     lateinit var emvUtils: EmvUtils
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
@@ -27,5 +30,9 @@ class MainApp : Application() {
 
         emvUtils.initializeEmvAid(emvHandler2)
         emvUtils.initializeEmvCapk(emvHandler2)
+
+        if (preferencesHelper.isAppFirstLaunch()) {
+            preferencesHelper.applyParameters()
+        }
     }
 }
