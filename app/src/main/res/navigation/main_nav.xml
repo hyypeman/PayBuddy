@@ -30,9 +30,9 @@
     </fragment>
     <fragment
         android:id="@+id/cardBalanceFragment"
-        android:name="com.judahben149.emvsync.presentation.cardBalance.CardBalanceFragment"
+        android:name="com.judahben149.emvsync.presentation.cardBalance.EmvFragment"
         android:label="fragment_card_balance"
-        tools:layout="@layout/fragment_card_balance" >
+        tools:layout="@layout/fragment_emv" >
         <action
             android:id="@+id/action_cardBalanceFragment_to_transactionResultFragment"
             app:destination="@id/transactionResultFragment" />
