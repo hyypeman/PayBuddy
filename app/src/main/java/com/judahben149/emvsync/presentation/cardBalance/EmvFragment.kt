@@ -58,7 +58,7 @@ class EmvFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2,
     @Inject
     lateinit var sessionManager: SessionManager
 
-    private val viewModel: CardBalanceViewModel by viewModels()
+    private val viewModel: EmvViewModel by viewModels()
 
     lateinit var cardReader: CardReader
     lateinit var pinPad: PinPad

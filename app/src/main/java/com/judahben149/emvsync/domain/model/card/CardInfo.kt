@@ -5,7 +5,7 @@ import com.nexgo.oaf.apiv3.device.reader.RfCardTypeEnum
 import com.nexgo.oaf.apiv3.device.reader.TrackErrorEnum
 
 data class CardInfo(
-    var cardNo: String? = null,
+    val cardNo: String? = null,
     val cardExistSlot: CardSlotTypeEnum? = null,
     val rfCardType: RfCardTypeEnum? = null,
     val isICC: Boolean = false,
