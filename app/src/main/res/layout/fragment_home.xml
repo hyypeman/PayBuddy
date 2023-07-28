@@ -1,32 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAD3CF"
     tools:context=".presentation.HomeFragment">
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_key_exchange"
+    <com.judahben149.emvsync.presentation.customView.BalanceCard
+        android:id="@+id/card_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Do Key Exchange"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_read_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Read Card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <FrameLayout
+        android:id="@+id/btn_purchase"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
         android:layout_marginTop="36dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_key_exchange"
-        />
+        android:background="@drawable/btn_gradient"
+        app:layout_constraintEnd_toStartOf="@id/btn_balance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_balance" >
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_money"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="46dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/deep_brown"
+            android:text="Purchase"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/btn_balance"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:background="@drawable/btn_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_purchase"
+        app:layout_constraintTop_toTopOf="@id/btn_purchase" >
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_wallet"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="46dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/deep_brown"
+            android:text="Balance"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/btn_key_exchange"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:background="@drawable/btn_gradient"
+        app:layout_constraintEnd_toStartOf="@id/btn_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_purchase" >
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_security"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="46dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/deep_brown"
+            android:text="Key Exchange"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/btn_settings"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:background="@drawable/btn_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_key_exchange"
+        app:layout_constraintTop_toTopOf="@id/btn_key_exchange" >
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_settings"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="46dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/deep_brown"
+            android:text="Settings"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
