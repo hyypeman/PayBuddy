@@ -1,5 +1,5 @@
 # About EMVSync
-EMVSync is a POS app which demonstrates the use of EMV and ISO 8583 to enable payments using the Nexgo Android SDK.
+EMVSync is a Point of Sale (POS) app which demonstrates the use of EMV and ISO 8583 to enable payments using the Nexgo Android SDK.
 Work in Progress 🚧🚧
 
 ## Features
@@ -11,17 +11,18 @@ Work in Progress 🚧🚧
 
 ## Build Tools
 * Kotlin
-* Kotlin Coroutines
+* Kotlin Coroutines for network calls and other intensive operations
+* Kotlin Flows for view-viewModel interactions
 * Navigation Component for Navigation
 * Dagger-Hilt for Dependency Injection
-* Nexgo Android SDK to interface with the POS terminal device and for EMV operations
+* Nexgo Android SDK to interface with the POS terminal kernel and for EMV operations
 * JPOS for ISO operations
 * ISO 8583 library for constructing and deconstructing ISO message sent to NIBSS
 * Sockets for network operations
 * OkHttp to assist with socket response parsing
 * Bouncy Castle for cryptographic operations
 * Timber for logging
-* Shared preferences
+* Shared preferences for storing simple data types
 
 
 ## Screenshots
@@ -51,9 +52,10 @@ Work in Progress 🚧🚧
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/a5af31ae-cf25-468e-b165-5b99e42195fd" alt="Key Exchange Screen - Midway" width="200">
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/4bf971a1-99f6-4478-a7c0-1eaed1d3cc96" alt="Key Exchange Screen - Completed" width="200">
 
-### Settings Screen
+### Extras
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/31b64c7f-0ca2-4441-91d1-36f891db5bea" alt="Settings Screen - Completed" width="200">
-
+<img src="https://github.com/judahben149/EMVSync/assets/71103838/523a03a5-a023-49a2-aa07-c0528e3a9d9b" alt="Settings Screen - Completed" width="200">
+<img src="https://github.com/judahben149/EMVSync/assets/71103838/1b796845-ea39-4e4a-b7ff-4c074b61ab0b" alt="Settings Screen - Completed" width="200">\
 
 
 ## Clips
