@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.purchase.PurchaseFragment">
+
+    <TextView
+        android:id="@+id/tv_amount_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/mulish_extra_bold"
+        android:textAlignment="center"
+        android:textColor="@color/deep_brown"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="0.00"
+        tools:text="10,000.00" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:fontFamily="@font/mulish_semi_bold"
+        android:text="NGN"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_amount_field"
+        app:layout_constraintStart_toEndOf="@+id/tv_amount_field"
+        app:layout_constraintTop_toTopOf="@+id/tv_amount_field" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pinpad_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_amount_field">
+
+        <LinearLayout
+            android:id="@+id/layout_first_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_one_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="1"
+                android:background="@drawable/pinpad_background"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_two_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:background="@drawable/pinpad_background"
+                android:gravity="center"
+                android:text="2"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_three_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:background="@drawable/pinpad_background"
+                android:gravity="center"
+                android:text="3"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_second_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layout_first_row">
+
+            <TextView
+                android:id="@+id/tv_four_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:background="@drawable/pinpad_background"
+                android:gravity="center"
+                android:text="4"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_five_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:background="@drawable/pinpad_background"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="5"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_six_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/pinpad_background"
+                android:fontFamily="@font/mulish_bold"
+                android:gravity="center"
+                android:text="6"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_third_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layout_second_row">
+
+            <TextView
+                android:id="@+id/tv_seven_key"
+                android:layout_width="wrap_content"
+                android:background="@drawable/pinpad_background"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="7"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_eight_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:background="@drawable/pinpad_background"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="8"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_nine_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:background="@drawable/pinpad_background"
+                android:gravity="center"
+                android:text="9"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_fourth_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layout_third_row">
+
+            <TextView
+                android:id="@+id/tv_clear_key"
+                android:background="@drawable/pinpad_background"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingHorizontal="4dp"
+                android:fontFamily="@font/mulish_bold"
+                android:gravity="center"
+                android:text="Clear"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_zero_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pinpad_background"
+                android:layout_weight="1.3"
+                android:paddingVertical="20dp"
+                android:fontFamily="@font/mulish_bold"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/tv_cancel_key"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/pinpad_background"
+                android:paddingVertical="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/mulish_bold"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        app:layout_constraintHorizontal_weight="1.2"
+        android:layout_marginHorizontal="24dp"
+        android:backgroundTint="#FFE5E4"
+        android:text="Cancel"
+        android:textColor="@color/md_theme_dark_onPrimary"
+        app:layout_constraintTop_toTopOf="@id/btn_continue"
+        app:layout_constraintBottom_toBottomOf="@id/btn_continue"
+        app:layout_constraintEnd_toStartOf="@id/btn_continue"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        app:layout_constraintHorizontal_weight="2"
+        style="@style/ButtonStyleActive"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/mulish_bold"
+        app:layout_constraintStart_toEndOf="@id/btn_cancel"
+        android:textColor="@color/white"
+        android:text="PAY"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/pinpad_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
