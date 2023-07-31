@@ -39,6 +39,7 @@ Work in Progress 🚧🚧
 
 ### Card Payment Flow
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/5ff4ccb1-a942-48d4-943e-0db917afaf9e" alt="Home screen" width="200">
+<img src="https://github.com/judahben149/EMVSync/assets/71103838/2e161e5b-1afe-4899-a400-b9d2ed8a3fc4" alt="Home screen" width="200">
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/f4365999-7e10-42f1-9a6b-72a86143c44f" alt="Home screen" width="200">
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/400ca9e2-889f-49bd-88dc-163795485687" alt="Home screen" width="200">
 <img src="https://github.com/judahben149/EMVSync/assets/71103838/6c552156-2e29-411e-86a8-7c4467c63464" alt="Home screen" width="200">
