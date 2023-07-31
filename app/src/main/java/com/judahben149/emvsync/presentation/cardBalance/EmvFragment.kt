@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.judahben149.emvsync.databinding.FragmentCardBalanceBinding
+import com.judahben149.emvsync.databinding.FragmentEmvBinding
 import com.judahben149.emvsync.domain.model.card.CardType
 import com.judahben149.emvsync.domain.model.card.PinType
 import com.judahben149.emvsync.domain.model.card.TransactionType
@@ -43,7 +43,7 @@ class EmvFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2,
         findNavController()
     }
 
-    private var _binding: FragmentCardBalanceBinding? = null
+    private var _binding: FragmentEmvBinding? = null
     private val binding get() = _binding!!
 
     @Inject
@@ -67,7 +67,7 @@ class EmvFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCardBalanceBinding.inflate(inflater, container, false)
+        _binding = FragmentEmvBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -400,7 +400,7 @@ class EmvFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2,
 
             if (state.isTransactionCompleted && !state.shouldReverseTransaction) {
                 val transactionData = viewModel.transactionDataState.value
-                val action = CardBalanceFragmentDirections.actionCardBalanceFragmentToTransactionResultFragment(transactionData)
+                val action = EmvFragmentDirections.actionCardBalanceFragmentToTransactionResultFragment(transactionData)
 
                 navController.navigate(action)
             }
@@ -411,7 +411,7 @@ class EmvFragment : Fragment(), OnCardInfoListener, OnEmvProcessListener2,
 
             if (state.isReversalComplete) {
                 val transactionData = viewModel.transactionDataState.value
-                val action = CardBalanceFragmentDirections.actionCardBalanceFragmentToTransactionResultFragment(transactionData)
+                val action = EmvFragmentDirections.actionCardBalanceFragmentToTransactionResultFragment(transactionData)
 
                 navController.navigate(action)
             }
