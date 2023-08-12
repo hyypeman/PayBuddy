@@ -5,15 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.judahben149.emvsync.domain.SocketClient
 import com.judahben149.emvsync.domain.model.NIBSSPackager
-import com.judahben149.emvsync.iso.KeyExchangeHandler
-import com.judahben149.emvsync.utils.Constants
-import com.judahben149.emvsync.utils.Constants.IP_ADDRESS
-import com.judahben149.emvsync.utils.Constants.PORT
+import com.judahben149.emvsync.domain.usecase.KeyExchangeUseCase
+import com.judahben149.emvsync.utils.*
 import com.judahben149.emvsync.utils.Constants.TERMINAL_MASTER_KEY
 import com.judahben149.emvsync.utils.Constants.TERMINAL_PIN_KEY
-import com.judahben149.emvsync.utils.HexUtils
-import com.judahben149.emvsync.utils.fetchString
-import com.judahben149.emvsync.utils.logThis
 import com.nexgo.oaf.apiv3.DeviceEngine
 import com.nexgo.oaf.apiv3.device.pinpad.WorkKeyTypeEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,8 +23,9 @@ import javax.inject.Inject
 @HiltViewModel
 class KeyExchangeViewModel @Inject constructor(
     private val deviceEngine: DeviceEngine,
-    private val keyExchangeHandler: KeyExchangeHandler,
-    private val sharedPreferences: SharedPreferences
+    private val keyExchangeUseCase: KeyExchangeUseCase,
+    private val sharedPreferences: SharedPreferences,
+    private val sessionManager: SessionManager
 ): ViewModel() {
 
     private var _state: MutableStateFlow<KeyExchangeState> = MutableStateFlow(KeyExchangeState())
@@ -38,22 +34,27 @@ class KeyExchangeViewModel @Inject constructor(
 
     fun doKeyExchange() {
         val packager = NIBSSPackager()
+        val channel = SocketClient.getClient(
+            sessionManager.getHostIpAddress(),
+            sessionManager.getPortNumber(),
+            packager
+        )
         "KeyExchangeViewModel - started doExchange()".logThis()
 
         viewModelScope.launch(Dispatchers.IO) { //do TMK
-            val tmkResponse = keyExchangeHandler.doTMKTransaction(SocketClient.getClient(IP_ADDRESS, PORT, packager))
+            val tmkResponse = keyExchangeUseCase.doTMKTransaction(channel)
 
             if (tmkResponse.isSuccessful()) { // if TMK successful, do TSK
                 _state.update { it.copy(isMasterKeyReceived = true) }
-                val tskResponse = keyExchangeHandler.doTSKTransaction(SocketClient.getClient(IP_ADDRESS, PORT, packager))
+                val tskResponse = keyExchangeUseCase.doTSKTransaction(channel)
 
                 if (tskResponse.isSuccessful()) { // if TSK successful, do TPK
                     _state.update { it.copy(isSessionKeyReceived = true) }
-                    val tpkResponse = keyExchangeHandler.doTPKTransaction(SocketClient.getClient(IP_ADDRESS, PORT, packager))
+                    val tpkResponse = keyExchangeUseCase.doTPKTransaction(channel)
 
                     //do parameter download also
                     val parameterDownloadResp =
-                        keyExchangeHandler.doParameterDownloadTransaction(SocketClient.getClient(IP_ADDRESS, PORT, packager))
+                        keyExchangeUseCase.doParameterDownloadTransaction(channel)
 
                     if (parameterDownloadResp.isSuccessful()) {
                         _state.update { it.copy(isParameterReceived = true) }

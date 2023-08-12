@@ -1,9 +1,10 @@
-package com.judahben149.emvsync.iso
+package com.judahben149.emvsync.domain.usecase
 
 import android.content.SharedPreferences
 import com.judahben149.emvsync.domain.model.NIBSSPackager
 import com.judahben149.emvsync.domain.model.keyExchange.KeyExchangeResponse
 import com.judahben149.emvsync.domain.model.keyExchange.KeyExchangeType
+import com.judahben149.emvsync.iso.TransactionBaseChannel
 import com.judahben149.emvsync.utils.*
 import com.judahben149.emvsync.utils.Constants.COUNTRY_CODE
 import com.judahben149.emvsync.utils.Constants.CTMS_TIME_DATE
@@ -20,9 +21,10 @@ import com.judahben149.emvsync.utils.Constants.TERMINAL_SESSION_KEY
 import com.judahben149.emvsync.utils.Constants.TMK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.Constants.TPK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.Constants.TSK_PROCESSING_CODE
-import com.judahben149.emvsync.utils.ISOUtils.getStan
-import com.judahben149.emvsync.utils.ISOUtils.parseResponse
+import com.judahben149.emvsync.utils.isoUtils.ISOUtils.getStan
+import com.judahben149.emvsync.utils.isoUtils.ISOUtils.parseResponse
 import com.judahben149.emvsync.utils.cryptographyUtils.Sha256Utils
+import com.judahben149.emvsync.utils.isoUtils.ISOUtils
 import org.jpos.iso.ISODate
 import org.jpos.iso.ISOException
 import org.jpos.iso.ISOMsg
@@ -31,7 +33,7 @@ import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
-class KeyExchangeHandler @Inject constructor(private val sharedPreferences: SharedPreferences) {
+class KeyExchangeUseCase @Inject constructor(private val sharedPreferences: SharedPreferences, private val sessionManager: SessionManager) {
 
     private val date = Date()
     private val transactionPackager: NIBSSPackager = NIBSSPackager()
@@ -55,7 +57,7 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
             tmkRequest.set(11, getStan())
             tmkRequest.set(12, transactionTime)
             tmkRequest.set(13, transactionDate)
-            tmkRequest.set(41, TERMINAL_ID)
+            tmkRequest.set(41, sessionManager.getTerminalId())
             parseResponse(String(tmkRequest.pack()), transactionPackager)
 
             channel.send(tmkRequest)
@@ -100,7 +102,7 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
             tskRequest.set(11, getStan())
             tskRequest.set(12, transactionTime)
             tskRequest.set(13, transactionDate)
-            tskRequest.set(41, TERMINAL_ID)
+            tskRequest.set(41, sessionManager.getTerminalId())
             parseResponse(String(tskRequest.pack()), transactionPackager)
 
             channel.send(tskRequest)
@@ -145,7 +147,7 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
             tpkRequest.set(11, getStan())
             tpkRequest.set(12, transactionTime)
             tpkRequest.set(13, transactionDate)
-            tpkRequest.set(41, TERMINAL_ID)
+            tpkRequest.set(41, sessionManager.getTerminalId())
             parseResponse(String(tpkRequest.pack()), transactionPackager)
 
             channel.send(tpkRequest)
@@ -191,7 +193,7 @@ class KeyExchangeHandler @Inject constructor(private val sharedPreferences: Shar
             parameterDownloadRequest.set(11, getStan())
             parameterDownloadRequest.set(12, transactionTime)
             parameterDownloadRequest.set(13, transactionDate)
-            parameterDownloadRequest.set(41, TERMINAL_ID)
+            parameterDownloadRequest.set(41, sessionManager.getTerminalId())
             parameterDownloadRequest.set(62, "01008".plus(TERMINAL_ID))
 
             parameterDownloadRequest.set(64, ISOUtil.hex2byte(SIXTY_FOUR_ZEROS))
