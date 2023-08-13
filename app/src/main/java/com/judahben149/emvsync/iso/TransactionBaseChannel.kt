@@ -4,7 +4,6 @@ import com.judahben149.emvsync.utils.logThis
 import okhttp3.internal.and
 import org.jpos.iso.BaseChannel
 import org.jpos.iso.ISOPackager
-import org.jpos.iso.channel.NACChannel
 import java.io.DataInputStream
 import java.io.EOFException
 import java.io.IOException
@@ -33,8 +32,8 @@ class TransactionBaseChannel(host: String?, port: Int, packager: ISOPackager?) :
             }
         } catch (ex: SocketException) {
             try {
-                throw TimeoutException("Transaction timed out!")
                 "Threw timeout exception".logThis("TT")
+                throw TimeoutException("Transaction timed out!")
             } catch (exception: TimeoutException) {
                 "Couldn't throw timeout exception - error(${exception.message})".logThis("TT")
                 exception.printStackTrace()
