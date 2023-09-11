@@ -1,5 +1,5 @@
-# About EMVSync
-EMVSync is a Point of Sale (POS) app which demonstrates the use of EMV and ISO 8583 to enable payments using the Nexgo Android SDK.
+# About PayBuddy
+PayBuddy is a Point of Sale (POS) app which demonstrates the use of EMV and ISO 8583 to enable payments using the Nexgo Android SDK.
 Work in Progress 🚧🚧🚧
 
 ## Features
