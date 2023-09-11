@@ -1,6 +1,6 @@
 # About EMVSync
 EMVSync is a Point of Sale (POS) app which demonstrates the use of EMV and ISO 8583 to enable payments using the Nexgo Android SDK.
-Work in Progress 🚧🚧
+Work in Progress 🚧🚧🚧
 
 ## Features
 * Check card balance
