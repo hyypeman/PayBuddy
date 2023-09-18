@@ -75,3 +75,7 @@ https://github.com/judahben149/EMVSync/assets/71103838/9e252199-3031-44a0-b715-4
 
 [<img src="https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83" width="600" height="300"
 />](https://www.youtube.com/embed/vUp1lGvofE4)
+
+
+[![PayBuddy Demo (N86 device)]([https://img.youtube.com/vi/<VIDEO_ID>/hqdefault.jpg](https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83)https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83)]([https://www.youtube.com/embed/<VIDEO_ID>](https://www.youtube.com/embed/vUp1lGvofE4)https://www.youtube.com/embed/vUp1lGvofE4)
+
