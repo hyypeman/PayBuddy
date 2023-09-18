@@ -60,6 +60,7 @@ Work in Progress 🚧🚧🚧
 
 
 ## Clips
+### N5 Device
 #### Card Balance Flow
 https://github.com/judahben149/EMVSync/assets/71103838/136166ff-b6d6-46ff-a76a-8096e81947d5
 
@@ -68,4 +69,6 @@ https://github.com/judahben149/EMVSync/assets/71103838/fcdbbd72-8f79-4f69-a0d9-4
 ##### Failed case
 https://github.com/judahben149/EMVSync/assets/71103838/9e252199-3031-44a0-b715-4fb9128ecfae
 
+### N86 Device
+![IMG_8357](https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83)
 
