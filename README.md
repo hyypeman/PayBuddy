@@ -81,3 +81,4 @@ https://github.com/judahben149/EMVSync/assets/71103838/9e252199-3031-44a0-b715-4
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vUp1lGvofE4?si=zXoiNwHZ0FTGplXj" frameborder="0" allowfullscreen></iframe>
 
+[![PayBuddy Demo (N86 device)](https://img.youtube.com/vi/vUp1lGvofE4/0.jpg)](https://www.youtube.com/shorts/vUp1lGvofE4?si=zXoiNwHZ0FTGplXj)
