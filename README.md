@@ -70,15 +70,5 @@ https://github.com/judahben149/EMVSync/assets/71103838/fcdbbd72-8f79-4f69-a0d9-4
 https://github.com/judahben149/EMVSync/assets/71103838/9e252199-3031-44a0-b715-4fb9128ecfae
 
 ### N86 Device
-![IMG_8357](https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83)
-
-
-[<img src="https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83" width="600" height="300"
-/>](https://www.youtube.com/embed/vUp1lGvofE4)
-
-
-[![PayBuddy Demo (N86 device)]([https://img.youtube.com/vi/<VIDEO_ID>/hqdefault.jpg](https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83)https://github.com/judahben149/PayBuddy/assets/71103838/874ff295-62a0-4783-a710-c1e25d6ccc83)]([https://www.youtube.com/embed/<VIDEO_ID>](https://www.youtube.com/embed/vUp1lGvofE4)https://www.youtube.com/embed/vUp1lGvofE4)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vUp1lGvofE4?si=zXoiNwHZ0FTGplXj" frameborder="0" allowfullscreen></iframe>
 
 [![PayBuddy Demo (N86 device)](https://img.youtube.com/vi/vUp1lGvofE4/0.jpg)](https://www.youtube.com/shorts/vUp1lGvofE4?si=zXoiNwHZ0FTGplXj)
