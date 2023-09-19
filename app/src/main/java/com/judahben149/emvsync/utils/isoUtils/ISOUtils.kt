@@ -40,7 +40,7 @@ object ISOUtils {
      * @param packager The ISO packager to unpack the data
      **/
 
-    fun parseResponse(data: String, packager: NIBSSPackager): Map<String, String>? {
+    fun parseAndLogIsoMessage(data: String, packager: NIBSSPackager): Map<String, String>? {
         var hashMap = HashMap<String, String>()
 
         try {

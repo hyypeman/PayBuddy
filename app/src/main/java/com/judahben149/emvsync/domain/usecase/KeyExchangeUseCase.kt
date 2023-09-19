@@ -22,7 +22,7 @@ import com.judahben149.emvsync.utils.Constants.TMK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.Constants.TPK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.Constants.TSK_PROCESSING_CODE
 import com.judahben149.emvsync.utils.isoUtils.ISOUtils.getStan
-import com.judahben149.emvsync.utils.isoUtils.ISOUtils.parseResponse
+import com.judahben149.emvsync.utils.isoUtils.ISOUtils.parseAndLogIsoMessage
 import com.judahben149.emvsync.utils.cryptographyUtils.Sha256Utils
 import com.judahben149.emvsync.utils.isoUtils.ISOUtils
 import org.jpos.iso.ISODate
@@ -58,13 +58,13 @@ class KeyExchangeUseCase @Inject constructor(private val sharedPreferences: Shar
             tmkRequest.set(12, transactionTime)
             tmkRequest.set(13, transactionDate)
             tmkRequest.set(41, sessionManager.getTerminalId())
-            parseResponse(String(tmkRequest.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(tmkRequest.pack()), transactionPackager)
 
             channel.send(tmkRequest)
             val response = channel.receive()
             channel.disconnect()
 
-            parseResponse(String(response.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(response.pack()), transactionPackager)
 
             if (response.getString(39).endsWith("00")) {
                 val masterKey = ISOUtils.getDecryptedTMKFromHost(response.getString(53)).toString()
@@ -103,13 +103,13 @@ class KeyExchangeUseCase @Inject constructor(private val sharedPreferences: Shar
             tskRequest.set(12, transactionTime)
             tskRequest.set(13, transactionDate)
             tskRequest.set(41, sessionManager.getTerminalId())
-            parseResponse(String(tskRequest.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(tskRequest.pack()), transactionPackager)
 
             channel.send(tskRequest)
             val response = channel.receive()
             channel.disconnect()
 
-            parseResponse(String(response.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(response.pack()), transactionPackager)
 
             if (response.getString(39).endsWith("00")) {
                 val savedMasterKey = sharedPreferences.fetchString(TERMINAL_MASTER_KEY)
@@ -148,13 +148,13 @@ class KeyExchangeUseCase @Inject constructor(private val sharedPreferences: Shar
             tpkRequest.set(12, transactionTime)
             tpkRequest.set(13, transactionDate)
             tpkRequest.set(41, sessionManager.getTerminalId())
-            parseResponse(String(tpkRequest.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(tpkRequest.pack()), transactionPackager)
 
             channel.send(tpkRequest)
             val response = channel.receive()
             channel.disconnect()
 
-            parseResponse(String(response.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(response.pack()), transactionPackager)
 
             if (response.getString(39).endsWith("00")) {
                 val pinKey = response.getString(53).substring(0, 32)
@@ -210,13 +210,13 @@ class KeyExchangeUseCase @Inject constructor(private val sharedPreferences: Shar
                 )
             )
 
-            parseResponse(String(parameterDownloadRequest.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(parameterDownloadRequest.pack()), transactionPackager)
 
             channel.send(parameterDownloadRequest)
             val response = channel.receive()
             channel.disconnect()
 
-            parseResponse(String(response.pack()), transactionPackager)
+            parseAndLogIsoMessage(String(response.pack()), transactionPackager)
 
             if (response.getString(39).endsWith("00")) {
                 val field62 = response.getString(62)

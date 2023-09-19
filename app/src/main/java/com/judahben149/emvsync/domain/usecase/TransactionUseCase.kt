@@ -113,16 +113,16 @@ class TransactionUseCase @Inject constructor(
                 )
             )
 
-            ISOUtils.parseResponse(String(isoRequest.pack()), transactionPackager) //just to print the fields in log
+            ISOUtils.parseAndLogIsoMessage(String(isoRequest.pack()), transactionPackager) //just to print the fields in log
 
             channel.send(isoRequest)
             isoResponse = channel.receive()
-            ISOUtils.parseResponse(String(isoResponse.pack()), transactionPackager)
+            ISOUtils.parseAndLogIsoMessage(String(isoResponse.pack()), transactionPackager)
             channel.disconnect()
 
             //Confirm if there's a response
             if (isoResponse.hasField("39")) {
-                ISOUtils.parseResponse(String(isoResponse.pack()), transactionPackager)
+                ISOUtils.parseAndLogIsoMessage(String(isoResponse.pack()), transactionPackager)
 
                 //set response back to balance response lambda in viewModel
                 val transactionResponse = TransactionResponse().apply {
