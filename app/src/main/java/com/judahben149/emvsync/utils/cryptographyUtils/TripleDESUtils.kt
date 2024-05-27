@@ -5,6 +5,7 @@ import java.security.Security
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
+// This is what the convolopes use
 class TripleDESUtils(key: ByteArray) {
     private var encrypter: Cipher? = null
     private var decrypter: Cipher? = null

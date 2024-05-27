@@ -12,10 +12,10 @@ class PreferencesHelper @Inject constructor(private val sharedPreferences: Share
 
     fun applyParameters() {
         sharedPreferences.apply {
-            saveString(IP_ADDRESS, "196.6.103.18")
-            saveString(PORT, "5001")
-            saveString(TERMINAL_ID, "2070AL32")
-            saveString(ACQUIRING_INSTITUTION_ID, "111129")
+            saveString(IP_ADDRESS, "206.71.17.51") // TODO: Change this to the URL
+            saveString(PORT, "443")
+            saveString(TERMINAL_ID, "NW16413")
+            saveString(ACQUIRING_INSTITUTION_ID, "273970116") //042000314 Change the acquiring insitution ID for PAI metabank ACH routing 273970116
         }
     }
 

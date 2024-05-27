@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:fontFamily="@font/mulish_semi_bold"
-        android:text="NGN"
+        android:text="USD"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_amount_field"
         app:layout_constraintStart_toEndOf="@+id/tv_amount_field"

@@ -106,14 +106,13 @@ class TransactionResultFragment : Fragment() {
                         val balance = String.format(
                             Locale.US,
                             "%,.2f",
-                            ISOCurrency.convertFromIsoMsg(transactionData.accountBalance, "NGN")
                         )
-                        sharedPreferences.saveString(LAST_BALANCE, "N$balance".toString())
+                        sharedPreferences.saveString(LAST_BALANCE, "USD$balance".toString())
                         sharedPreferences.saveString(CARD_HOLDER_NAME, transactionData.cardHolderName.toString())
 
                         tvTransactionResultStatus.text = "Balance Enquiry Successful"
                         tvAmountText.text = "Account Balance: "
-                        tvAmount.text = "NGN $balance"
+                        tvAmount.text = "USD $balance"
 
                         viewModel.togglePrintable()
                     }
@@ -121,7 +120,7 @@ class TransactionResultFragment : Fragment() {
                     TransactionType.PURCHASE -> {
                         animResult.setAnimation(R.raw.anim_success)
                         tvTransactionResultStatus.text = "Payment Successful"
-                        tvAmount.text = "NGN ${ transactionData.amount.toString() }"
+                        tvAmount.text = "USD ${ transactionData.amount.toString() }"
 
                         viewModel.togglePrintable()
                     }

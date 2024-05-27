@@ -30,15 +30,13 @@ class PrinterUtils {
 
             when (transactionData.transType) {
                 TransactionType.PURCHASE, TransactionType.REVERSAL -> {
-                    amount = "Amount: NGN ${transactionData.amount}"
+                    amount = "Amount: USD ${transactionData.amount}"
                 }
 
                 TransactionType.BALANCE -> {
-                    amount = "Balance: NGN " + String.format(
+                    amount = "Balance: USD " + String.format(
                         Locale.US,
-                        "%,.2f",
-                        ISOCurrency.convertFromIsoMsg(transactionData.accountBalance, "NGN")
-                    )
+                        "%,.2f")
                 }
             }
         } else {
