@@ -1,6 +1,5 @@
 package com.judahben149.emvsync.utils.isoUtils
 
-import com.judahben149.emvsync.BuildConfig
 import com.judahben149.emvsync.domain.model.NIBSSPackager
 import com.judahben149.emvsync.domain.model.card.TransactionData
 import com.judahben149.emvsync.utils.cryptographyUtils.AESUtils
@@ -13,6 +12,9 @@ import org.jpos.iso.ISOUtil
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
+
 
 object ISOUtils {
 
@@ -67,17 +69,33 @@ object ISOUtils {
         return hashMap
     }
 
+    /**
+     * Communicates with the host and the host
+     * sends back an encrypted terminal master key
+     * We then use the clear text key components to decrypt it.
+     *
+     * I'm not sure whether we are able to connect to the host yet.
+     */
     fun getDecryptedTMKFromHost(field53: String): String? {
+        // Hardcoded from Andrew's ATM screenshot for now
+        val componentA = "376BFB98AE2629A129A889BAF454495E"
+        val componentB = "EC497FFB6B6D34013707CEB3B69E8080"
+        val expectedKCV = "530A1C" // This may not be correct, if this part fails remove the verification
         val encryptedKey = field53.substring(0, 32) //This is the encrypted TMK from CTMS
 
         var plainKey: ByteArray? = null
         try {
-            val bytesXORKeyComponents = ISOUtil.hex2byte(getXorOfGroupKey())
+            val combinedKey = combineKeys(componentA, componentB)
+            if (!verifyCombinedKey(combinedKey, expectedKCV)) {
+                throw Exception("Combined key verification failed")
+            }
+            val bytesCombinedKey = ISOUtil.hex2byte(combinedKey)
             val bytesEncryptedKeyFromCTMS = ISOUtil.hex2byte(encryptedKey)
-            val cipherForKeyDecryption = TripleDESUtils(bytesXORKeyComponents)
+            val cipherForKeyDecryption = TripleDESUtils(bytesCombinedKey)
 
-            //decrypt
+            // Decrypt
             plainKey = cipherForKeyDecryption.decode(bytesEncryptedKeyFromCTMS)
+
             "Plain key - ${plainKey.toString()}".logThis()
 
         } catch (ex: Exception) {
@@ -107,10 +125,10 @@ object ISOUtils {
         return ISOUtil.hexString(plainKey)
     }
 
-    private fun getXorOfGroupKey(): String {
-        val hostGroupKey = BuildConfig.HOST_GROUP_KEY
-        return AESUtils().decryptHexFormat(hostGroupKey).toString()
-    }
+//    private fun getXorOfGroupKey(): String {
+//        val hostGroupKey = BuildConfig.HOST_GROUP_KEY
+//        return AESUtils().decryptHexFormat(hostGroupKey).toString()
+//    }
 
     fun parseTLV(response: String, Tag: String): String? {
         var resp = response
@@ -164,6 +182,24 @@ object ISOUtils {
 
     fun getIsoTransDateTime(): String {
         return ISODate.getDateTime(Date())
+    }
+
+    fun combineKeys(componentA: String, componentB: String): String {
+        val keyA = componentA.chunked(2).map { it.toInt(16) }
+        val keyB = componentB.chunked(2).map { it.toInt(16) }
+        val combinedKey = keyA.zip(keyB) { a, b -> a xor b }
+        return combinedKey.joinToString("") { it.toString(16).padStart(2, '0') }.uppercase()
+    }
+
+    private fun verifyCombinedKey(combinedKey: String, expectedKCV: String): Boolean {
+        val keyBytes = ISOUtil.hex2byte(combinedKey)
+        val zeroBytes = ByteArray(8) { 0 }
+        val cipher = Cipher.getInstance("DESede/ECB/NoPadding")
+        val keySpec = SecretKeySpec(keyBytes, "DESede")
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec)
+        val encryptedZeroBytes = cipher.doFinal(zeroBytes)
+        val kcv = encryptedZeroBytes.take(3).toByteArray()
+        return ISOUtil.hexString(kcv) == expectedKCV
     }
 
 

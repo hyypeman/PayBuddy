@@ -3,6 +3,7 @@ package com.judahben149.emvsync.presentation.cardBalance
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.judahben149.emvsync.BuildConfig
 import com.judahben149.emvsync.domain.SocketClient
 import com.judahben149.emvsync.domain.mapper.toCardInfo
 import com.judahben149.emvsync.domain.model.NIBSSPackager
@@ -30,6 +31,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.jpos.iso.ISOUtil
 import javax.inject.Inject
+
 
 @HiltViewModel
 class EmvViewModel @Inject constructor(
@@ -106,7 +108,7 @@ class EmvViewModel @Inject constructor(
 
             if (isInitializationComplete) {
                 val packager = NIBSSPackager()
-                val channel = SocketClient.getClient(sessionManager.getHostIpAddress(), sessionManager.getPortNumber(), packager)
+                val channel = SocketClient.getClient(sessionManager.getHostURL(), packager)
 
                 val isoResponse = transactionUseCase.buildISOMsg(channel, _transactionDataState.value) { transactionResponse ->
                     transactionResponse.toString().logThis("Taggg")
@@ -157,8 +159,7 @@ class EmvViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val packager = NIBSSPackager()
             val channel = SocketClient.getClient(
-                sessionManager.getHostIpAddress(),
-                sessionManager.getPortNumber(),
+                sessionManager.getHostURL(),
                 packager
             )
 

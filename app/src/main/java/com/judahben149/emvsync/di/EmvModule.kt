@@ -21,6 +21,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object EmvModule {
 
+    /**
+     * seems to be unused but we'll let it be
+     */
     @Provides
     @Singleton
     fun providesHostConfiguration(): HostConfiguration {

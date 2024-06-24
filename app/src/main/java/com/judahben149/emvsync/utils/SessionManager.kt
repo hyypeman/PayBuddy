@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import com.judahben149.emvsync.utils.Constants.ACQUIRING_INSTITUTION_ID
 import com.judahben149.emvsync.utils.Constants.COUNTRY_CODE
 import com.judahben149.emvsync.utils.Constants.CURRENCY_CODE
+import com.judahben149.emvsync.utils.Constants.HOST_URL
 import com.judahben149.emvsync.utils.Constants.IP_ADDRESS
 import com.judahben149.emvsync.utils.Constants.MERCHANT_CATEGORY_CODE
 import com.judahben149.emvsync.utils.Constants.MERCHANT_ID
@@ -29,16 +30,9 @@ class SessionManager @Inject constructor(private val sharedPreferences: SharedPr
 //        return Constants.ACQUIRING_INSTITUTION_ID
     }
 
-    fun getHostIpAddress(): String {
-        return sharedPreferences.fetchString(IP_ADDRESS).toString()
-//        return Constants.IP_ADDRESS
+    fun getHostURL(): String {
+        return sharedPreferences.fetchString(HOST_URL).toString()
     }
-
-    fun getPortNumber(): String {
-        return sharedPreferences.fetchString(PORT).toString()
-//        return Constants.PORT
-    }
-
 
     fun getMerchantId(): String {
         return sharedPreferences.fetchString(MERCHANT_ID).toString()

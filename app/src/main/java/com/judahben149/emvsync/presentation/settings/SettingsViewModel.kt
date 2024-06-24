@@ -20,17 +20,13 @@ class SettingsViewModel @Inject constructor(private val sessionManager: SessionM
 
     private fun getParameters() {
         _state.update { it.copy(
-            hostIpAddress = sessionManager.getHostIpAddress(),
-            portNo = sessionManager.getPortNumber(),
             terminalNumber = sessionManager.getTerminalId(),
             acquiringInstitutionCode = sessionManager.getAcquiringInstitutionCode()
         ) }
     }
 
-    fun updateParameters(ipAddress: String, port: String, terminalNo: String, acquirerId: String) {
+    fun updateParameters(terminalNo: String, acquirerId: String) {
         sessionManager.apply {
-            saveHostIpAddress(ipAddress)
-            savePort(port)
             saveTerminalNumber(terminalNo)
             saveAcquirerID(acquirerId)
         }

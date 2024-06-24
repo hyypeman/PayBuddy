@@ -62,6 +62,7 @@ class KeyExchangeUseCase @Inject constructor(private val sharedPreferences: Shar
 
             channel.send(tmkRequest)
             val response = channel.receive()
+            "Response - ".plus(String(response.pack())).logThis()
             channel.disconnect()
 
             parseAndLogIsoMessage(String(response.pack()), transactionPackager)

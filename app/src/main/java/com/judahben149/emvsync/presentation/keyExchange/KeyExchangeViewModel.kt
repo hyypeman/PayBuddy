@@ -3,6 +3,7 @@ package com.judahben149.emvsync.presentation.keyExchange
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.judahben149.emvsync.BuildConfig
 import com.judahben149.emvsync.domain.SocketClient
 import com.judahben149.emvsync.domain.model.NIBSSPackager
 import com.judahben149.emvsync.domain.usecase.KeyExchangeUseCase
@@ -31,12 +32,13 @@ class KeyExchangeViewModel @Inject constructor(
     private var _state: MutableStateFlow<KeyExchangeState> = MutableStateFlow(KeyExchangeState())
     val state: StateFlow<KeyExchangeState> = _state.asStateFlow()
 
-
+    /**
+     * This is the first thing that happens when the app is launched.
+     */
     fun doKeyExchange() {
         val packager = NIBSSPackager()
         val channel = SocketClient.getClient(
-            sessionManager.getHostIpAddress(),
-            sessionManager.getPortNumber(),
+            sessionManager.getHostURL(),
             packager
         )
         "KeyExchangeViewModel - started doExchange()".logThis()

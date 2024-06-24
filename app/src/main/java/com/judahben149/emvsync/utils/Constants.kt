@@ -21,7 +21,17 @@ object Constants {
 //    const val IP_ADDRESS = "196.6.103.18"
 //    const val PORT = "5001"
 //    const val TERMINAL_ID = "2070AL32"
+    /**
+     * These constants are mapped to strings
+     * instead of actual values because
+     * their raw info is saved in PreferencesHelper
+     * The session manager then caches the values
+     * and we can update them from the settings page.
+     *
+     * This is useful for when we need to rotate ISOs
+     */
     const val IP_ADDRESS = "IP_ADDRESS"
+    const val HOST_URL = "HOST_URL"
     const val PORT = "PORT"
     const val TERMINAL_ID = "TERMINAL_ID"
     const val COMPONENT_KEY_1 = ""

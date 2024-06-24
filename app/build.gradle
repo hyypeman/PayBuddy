@@ -19,6 +19,7 @@ android {
         versionName "1.0"
 
         buildConfigField ("String", "HOST_GROUP_KEY", getHostGroupKey())
+        buildConfigField("String", "HOST_URL", getHostURL())
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,6 +54,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.test:monitor:1.6.1'
     def hilt_version = "2.44.2"
     def lottieVersion = "5.2.0"
 
@@ -110,3 +112,11 @@ String getHostGroupKey() {
     properties.load(new FileInputStream(propFile))
     return properties['HOST_GROUP_KEY']
 }
+
+String getHostURL() {
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+    return properties['HOST_URL']
+}
+

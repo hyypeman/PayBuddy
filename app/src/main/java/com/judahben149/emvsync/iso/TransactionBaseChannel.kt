@@ -7,8 +7,10 @@ import org.jpos.iso.ISOPackager
 import java.io.DataInputStream
 import java.io.EOFException
 import java.io.IOException
+import java.net.Socket
 import java.net.SocketException
 import java.util.concurrent.TimeoutException
+import javax.net.ssl.SSLSocketFactory
 
 class TransactionBaseChannel(host: String?, port: Int, packager: ISOPackager?) :
     BaseChannel(host, port, packager) {
@@ -19,6 +21,17 @@ class TransactionBaseChannel(host: String?, port: Int, packager: ISOPackager?) :
         sslSocketFactory.setKeyStore("")
         setSocketFactory(sslSocketFactory)
         setTimeOut(0)
+    }
+
+    override fun connect() {
+        "Connecting to $host:$port".logThis("Connection")
+        try {
+            super.connect()
+            "Connected to $host:$port".logThis("Connection")
+        } catch (e: IOException) {
+            "Connection failed to $host:$port - ${e.message}".logThis("Connection")
+            throw e
+        }
     }
 
     private fun setTimeOut(timeout: Int) {
@@ -57,20 +70,21 @@ class TransactionBaseChannel(host: String?, port: Int, packager: ISOPackager?) :
         val array = ByteArray(2)
 
         while (length == 0) {
-//            serverIn.readFully(array, 0, 2)
-
-            readFully(serverIn, array, 0, 2)
-
-            length = array[0] and 0xFF shl 8 or (array[1] and 0xFF)
-            if (length == 0) {
-                serverOut.write(array)
+            try {
+                readFully(serverIn, array, 0, 2)
+                length = array[0] and 0xFF shl 8 or (array[1] and 0xFF)
+                if (length == 0) {
+                    serverOut.write(array)
+                }
+                serverOut.flush()
+            } catch (e: IOException) {
+                "Error reading message length: ${e.message}".logThis("TT")
+                break
             }
-            serverOut.flush()
         }
         "Get message length - $length".logThis("TT")
         return length
     }
-
 
     private fun readFully(`in`: DataInputStream, b: ByteArray?, off: Int, len: Int): Int {
         var count: Int

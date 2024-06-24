@@ -1,6 +1,5 @@
 package com.judahben149.emvsync.presentation.settings
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.judahben149.emvsync.R
 import com.judahben149.emvsync.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -40,8 +38,6 @@ class SettingsFragment : Fragment() {
         binding.btnUpdate.setOnClickListener {
             binding.apply {
                 viewModel.updateParameters(
-                    ipAddress = tvIpAddress.text.toString(),
-                    port = tvPort.text.toString(),
                     terminalNo = tvTerminal.text.toString(),
                     acquirerId = tvAcquiringId.text.toString(),
                 )
@@ -53,8 +49,7 @@ class SettingsFragment : Fragment() {
     private fun observeState() {
         viewModel.state.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach { state ->
             binding.apply {
-                tvIpAddress.setText(state.hostIpAddress)
-                tvPort.setText(state.portNo)
+
                 tvTerminal.setText(state.terminalNumber)
                 tvAcquiringId.setText(state.acquiringInstitutionCode)
             }
